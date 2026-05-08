@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>瀧川政尚 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>瀧川政尚 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. Sushi AI株式会社</a>
+  <a href="#k2">2. 株式会社トーガシ</a>
+  <a href="#k3">3. コクー株式会社</a>
+  <a href="#k4">4. 株式会社オーリーズ</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">管理担当役員（CFO候補）</span><span class="badge badge-blue">未上場（N-2）</span></div>
+  <div class="co-name">Sushi AI株式会社</div>
+  <div class="co-url"><a href="https://sushiai.jp" target="_blank">https://sushiai.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-0013 東京都港区浜松町２丁目２番１５号浜松町ダイヤビル２階</td></tr><tr><th>上場区分</th><td>未上場（N-2）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>他社には真似できない圧倒的なポジショニングと事業基盤<br>防衛省の中枢DXプロジェクトを牽引するという、大手SIerや有力AIベンチャーですら入り込めない独自のポジションを確立しています。加えて、アクセンチュアなどの大手ファームからの豊富な案件流入もあり、創業間もないながら既に黒字化、年末には月商2億円を見込むなど、非常に強力な事業基盤を誇ります。</li><li>超ハイスピードなIPOに向けた明確なロードマップ<br>上場経験のある井上会長が「すべての出口から逆算」して戦略を緻密に練り上げており、今年の11月にはN-1期に入るという超ハイスピードなIPO計画を主幹事証券と握って進めています。このタイミングでジョインすることは、急成長AIベンチャーのIPO準備のど真ん中をリードできる、非常にエキサイティングな機会です。</li><li>天才的なエンジニア陣と百戦錬磨の経営トップとの共闘<br>優秀な若手AIエンジニアたちを惹きつけるインキュベーション環境を持ちながら、ビジネスサイドは連続起業家である井上会長が強力に牽引しています。技術とビジネスの最高峰が掛け合わさる刺激的な環境で、ハイスピードかつダイナミックな事業創造に挑むことができます（経営陣とチャットで即座に連携し合うような、スタートアップ特有のスピード感や熱量を楽しめる方に特におすすめです）</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2024年11月に創業したばかりの若い企業ながら、2027年春頃のIPO（2026年11月にはN-1期入りを予定）を目指すなど、圧倒的なスピードで急速な事業拡大を実現しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2024年11月に創業したばかりの若い企業ながら、2027年春頃のIPO（2026年11月にはN-1期入りを予定）を目指すなど、圧倒的なスピードで急速な事業拡大を実現しています。</p><p>現在の主要事業であるAIコンサルティングにおいては、民間企業（大手コンサルティングファームからの豊富な案件流入など）だけでなく、防衛省のど真ん中のDXプロジェクトをトップとして牽引するなど、他のベンチャーが入り込めない国家の中枢領域にまで深く入り込んでいます。すでに今月で黒字化を達成し、年末には月商2億円ペースを見込むなど、盤石な事業・財務基盤を構築しつつあります。</p><p>また、東京大学の学生をはじめとする若手AI起業家を支援し、M&Aやジョイントベンチャーを通じて成長を加速させるエコシステムも展開しています。</p><p>Sushi AIの強みは、東大発AIエンジニアの水野氏が持つ最先端の技術力と、上場経験を持つ井上氏の豊富なビジネス経験・圧倒的な人脈（ロビー力）の掛け算にあります。</p><p>競合他社と技術的な差がつきにくいAI領域において、同社は「誰もいないポジションを先取りする」確固たる戦略を持っています。</p><p>また、単なるアプリケーション層のAI開発に留まらず、データベースレイヤーからのAIレディな環境構築（AI駆動開発）にも強みを持ち、既存の巨大システムをAI化する高度なノウハウを有している点も大きな差別化要因です。</p><p>単なるAI開発会社ではなく、「自国の未来に希望を創る」というミッションのもと、AI特化型インキュベーション事業を展開し、日本発のイノベーションを世界へ発信していきます。AIの力で日本の再興を実現するため、志を同じくする仲間と共に、意味のある事業創造に取り組んでいます。</p><p><strong>【注目代表者2名の経歴】</strong></p><p><strong>代表取締役社長：水野太賀氏</strong> 東京大学医学部出身のAIスペシャリスト。2023年にMedurance社代表取締役CEOを務め、AI、LLM、インフラなど幅広い技術領域に精通。自律型プロジェクトを推進する高度AIスタートアップを率い、最先端技術から大手開発委託まで手掛ける。東大の優秀なエンジニアネットワークを持ち、高品質な技術基盤を構築。</p><p><strong>代表取締役会長：井上裕基氏</strong> 立命館大学理工学部出身の連続起業家。日本オラクル入社後、ERPコンサルタントとしてキャリアをスタート。アクセンチュア、サイバーエージェントを経て、2006年にアジアビジネスLLC設立。2007年にWaqoo社を創業し代表取締役に就任、2021年に東証マザーズ市場にIPOを達成。豊富な事業経験と人脈を活かし、ビジネス面での推進力を提供。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 管理担当役員（CFO候補）</div>
+          <div class="job-preview">IPOを見据え、管理部門の立ち上げと強化を担う管理担当役員のポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>IPOを見据え、管理部門の立ち上げと強化を担う管理担当役員のポジションです。上場経験豊富なアドバイザーも参画予定。会計・財務を中心に監査法人や証券会社と連携し、上場準備の実務を現場感を持って推進できる方を求めています。</p><p><strong>主な業務内容：</strong></p><ul><li>管理部門全体の構築・統括</li><li>経理・財務・内部統制等のコーポレート機能の整備</li><li>IPO準備プロセスの推進</li></ul><p>経営層と近い距離で、スピード感を持って管理体制を整備し、会社の成長を支える中軸としてご活躍いただきます。上場経験の有無は問いません。実務をやり抜き、周囲と協調しながら前に進められる方を歓迎します。</p><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>ベンチャー企業のIPO経験またはIPO準備支援経験</li><li>管理部門全体の構築・統括経験</li><li>コーポレート戦略の立案・実行経験</li></ul><p><strong>求める人物像：</strong></p><ul><li>コーチャブルでベンチャーカルチャーに適応できるマインドをお持ちの方</li><li>年下や気の強い若手とも協働できるコミュニケーション能力</li><li>24時間働く気概があり、迅速な意思決定ができる</li><li>ベンチャーのスピード感に対応できる適応力</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://sushiai.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">経理部長候補（IPO準備対応）</span><span class="badge badge-blue">未上場（N-4以前）</span></div>
+  <div class="co-name">株式会社トーガシ</div>
+  <div class="co-url"><a href="https://www.tohgashi.co.jp" target="_blank">https://www.tohgashi.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒104-0041 東京都中央区新富2-14-4　住友新富ビル 2F</td></tr><tr><th>設立</th><td>1965年創業、2000年法人化</td></tr><tr><th>上場区分</th><td>未上場（N-4以前）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    IPO準備企業での経理実務経験を積める貴重な機会。年間3,000件以上のイベントを手がける実績豊富な企業で、Web3業界の注目イベント「WebX」や参加者4万人を超える「Climbers 2025」などの大型案件も手掛けている。三井物産出身の代表が率いる安定した経営基盤のもと、IPO準備の実務を通じてキャリアアップが図れる環境。
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。年間3,000件以上のイベントを手がけていて、2025年1月期末には売上高67億円（23年60億→24年63億円）を達成。その実績からも、堅実かつ着実に成長を続けている様子が伺えます。</p><p>特に注目したいのが、企画から運営までをワンストップで提供できる体制。社内には多くの専門職の方が在籍していて、各職種が密に連携しながらイベントを形にしていく力が、トーガシの大きな強みになっています。</p><p>たとえば、Web3業界の注目イベント「WebX」や、参加者4万人を超えるビジネスカンファレンス「Climbers 2025」といった大型案件にも関わっており、その実績からも、業界内での評価の高さが感じられます。（就職イベントはほぼ独占）</p><p>現在、今後の株式上場（IPO、現在N-3）を視野に入れながら、社内の管理体制をより一層強化していこうとされています。その中でも、新規事業部門（成長戦略推進室）、経理部門、情報システム部門については、今後の体制づくりに向けて人員の強化が大きなテーマとなっています。</p><p><strong>代表取締役　吉田守克氏</strong></p><p>1982年に三井物産株式会社へご入社以来、国内外の事業投資や開発を手がけてこられた。情報産業分野では海外スタートアップとのジョイントベンチャー設立に携わるなど、先進的な取り組みに多く関わってこられました。</p><p>その後、2006年にトーガシへ参画。以来、長く続くイベント施工会社を、単なる"作る会社"から"戦略的にプロデュースする会社"へと変えていく大きな改革をリードされています。</p><p>最近では、Web3、NFT、バーチャル空間といった新しい技術領域にも積極的に挑戦されており、「展示・イベントの在り方そのものを変えていく」という強いビジョンのもと、これまでの業界常識にとらわれない柔軟かつ革新的な経営スタイルを貫いていらっしゃいます。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 経理部長候補（IPO準備対応）</div>
+          <div class="job-preview">IPO準備における開示業務を中心とした経理業務全般を担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■募集背景</strong></p><p>当社は株式上場（IPO）を見据え、決算体制および開示体制の構築を進めています。特に、月次・年次決算に加え、有価証券報告書や決算短信等の開示資料を作成できる体制の内製化が急務となっており、即戦力として開示実務を担える人材を募集します。</p><p><strong>■業務内容</strong></p><p>経理業務全般に加え、IPO準備における開示業務を中心に担っていただきます。</p><p><strong>▼決算業務</strong></p><ul><li>月次・四半期・年次決算業務</li><li>仕訳・伝票処理、勘定科目管理</li><li>決算早期化・業務改善</li></ul><p><strong>▼開示業務（主担当想定）</strong></p><ul><li>有価証券報告書、四半期報告書の作成</li><li>決算短信、計算書類、事業報告の作成</li><li>開示資料のチェックおよび整合性確保</li><li>開示スケジュール管理</li></ul><p><strong>▼IPO準備・内部統制対応</strong></p><ul><li>会計論点の整理・ポリシー整備</li><li>監査法人対応（会計監査・レビュー対応）</li><li>J-SOX対応（業務フロー整備、証跡管理）</li><li>規程・マニュアル整備</li></ul><p><strong>▼その他（ご経験に応じて）</strong></p><ul><li>連結決算対応</li><li>予算管理・管理会計</li><li>税務対応（顧問税理士との連携）</li></ul><p><strong>■期待する役割（重要）</strong></p><ul><li>開示業務を自走できるレベルで推進すること</li><li>決算・開示の正確性およびスピードの両立</li><li>IPO審査に耐えうる証跡・プロセスの整備</li><li>経理業務の標準化・効率化の推進</li></ul><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>事業会社または監査法人での経理経験（3年以上）</li><li>年次決算の実務経験</li><li>開示資料作成経験（有価証券報告書または決算短信等）</li><li>会計基準（日本基準）の基本理解</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>IPO準備企業での経理経験</li><li>連結決算の実務経験</li><li>J-SOX対応経験</li><li>公認会計士・税理士資格（または科目合格）</li></ul><p><strong>求める人物像：</strong></p><ul><li>正確性とスピードを高いレベルで両立できる方</li><li>会計論点を自ら整理し、判断できる方</li><li>変化の多い環境でも柔軟に対応できる方</li><li>チーム・他部門と連携して業務を推進できる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.tohgashi.co.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">CFO</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">コクー株式会社</div>
+  <div class="co-url"><a href="https://cocoo.co.jp/" target="_blank">https://cocoo.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒101-0051 東京都千代田区神田神保町3-29帝国書院ビル5階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>上場を目指すIPO準備フェーズ真っ只中！</li><li>ベストベンチャー100に5年連続選出の実力企業</li><li>「女性×DX」の領域で独自ポジションを確立</li><li>GPTW認定企業で働きがいのある環境</li><li>資金調達済み＆CVCとの関係も強固</li><li>社員ファーストの価値観で、満足度の高い職場</li><li>新規事業・マネジメントポジションも続々拡大中</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">森本が社外役員の企業さまとなります。「人財×デジタル」で社会課題を解決する成長中のITベンチャー、コクー株式会社。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>森本が社外役員の企業さまとなります。<br><a href="https://cocoo.co.jp/news/3125/">https://cocoo.co.jp/news/3125/</a></p><p>「人財×デジタル」で社会課題を解決する成長中のITベンチャー、コクー株式会社。日本が直面する少子高齢化による労働力不足という本質的な課題に対し、"人財"と"デジタル"を融合した独自のアプローチで挑戦。特に「EXCEL女子」「RPA女子」「デジタルマーケティング女子」など、女性の力を最大限に活かしたDX人材育成・派遣サービスが話題となり、メディアにも多数取り上げられています。</p><p>売上は設立以来右肩上がりを続け、IPOに向けた準備も大詰めを迎えています。事業領域はRPA、インフラ、デジタルマーケティングに加え、不動産テック事業「REALVOICE®」などの新規分野にも積極展開。2023年にはシリーズBで2億円超の資金調達を完了し、今後もCVC中心に成長資金を確保予定です。</p><p>社会的評価も高く、ベストベンチャー100には5年連続選出、Forbes JAPAN WOMAN AWARDでは2年連続で上位入賞するなど、ESG・DEIにおいても先進的な取り組みを推進。働きがいのある会社（GPTW）にも選ばれ、社員満足度の高さが企業の成長を支えています。</p><p>『for me , for you. 〜社員満足なくして顧客満足は成しえない〜』を掲げ、社員一人ひとりの活躍と成長を重視。今まさに、成長ドライブの中心に立ちたい方には絶好のタイミングです。</p><p>こちらのニュースもぜひご確認ください：<br><a href="https://www.delphi-consulting.com/case/2022/2025/?utm_source=chatgpt.com">https://www.delphi-consulting.com/case/2022/2025/?utm_source=chatgpt.com</a></p><p><strong>▼代表取締役／入江 雄介 氏</strong></p><p><strong>【経歴】</strong><br>株式会社リクルートを経て、2019年にコクー株式会社を設立。経営者としての高い視座と、「人を活かす」組織づくりに徹底的にこだわる姿勢が評価され、社外アドバイザーやパートナー企業からの信頼も厚い。企業文化・働き方改革の旗振り役としても注目されている。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【confidential】★CFO</div>
+          <div class="job-preview">シリーズD資金調達の完遂から資本政策の策定・対外折衝まで</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容：</strong></p><ul><li>シリーズD資金調達の完遂（エクイティ＋デット戦略の立案・実行）</li><li>資本政策の策定・対外折衝</li><li>KPI起点の予算編成・N期逆算計画の構築</li><li>IPO準備に向けたガバナンス・予算統制体制の整備</li><li>既存財務組織（マネージャー2名）のマネジメント・体制再構築</li></ul><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>シリーズC以上のエクイティ調達経験、または上場企業での資本政策・M&A経験</li><li>銀行・VC・機関投資家との交渉・折衝経験</li><li>KPI起点の予算編成・業績管理体系の構築経験</li><li>IPO準備企業または上場企業での財務経営経験</li><li>組織マネジメント（財務部門の人員育成・体制構築）の実務経験</li></ul><p><strong>求める人物像：</strong></p><ul><li>戦略的思考と実務遂行能力を兼ね備えた対外交渉型のCFO</li><li>冷静に課題を分析し、迅速に意思決定できる実務家気質</li><li>機密性を保ちながらリスク管理できる誠実性と責任感が強い人材</li><li>会社の長期的成長とステークホルダーの信頼構築に使命感を持つ</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://cocoo.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://www.delphi-consulting.com/case/2022/2025/?utm_source=chatgpt.com" target="_blank">📊 ニュース記事</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">CFO</span><span class="badge badge-blue">未上場（N-2）</span></div>
+  <div class="co-name">株式会社オーリーズ</div>
+  <div class="co-url"><a href="https://allis-co.com/" target="_blank">https://allis-co.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区赤坂4丁目8−15 赤坂KOSENビル7階</td></tr><tr><th>設立</th><td>2011年</td></tr><tr><th>上場区分</th><td>未上場（N-2）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>2段階での上場を目指す成長フェーズ：</strong><br>2026年9月に東京プロマーケット（TPM）へ上場し、その後2028年にグロース市場への上場を計画しています。上場準備のプロセスから参画でき、管理体制の整備や仕組みづくりをダイナミックに経験できるエキサイティングなタイミングです。</li><li><strong>自己資本比率100％・VCなしの健全な経営基盤：</strong><br>現在、自己資本比率100％でベンチャーキャピタル等の外部資本を受け入れておらず、資金調達は銀行借入を通じて行っています。投資的なプレッシャーがない、健全で安定した基盤のもとで事業や経営管理を推進できます。</li><li><strong>M&Aを活用した積極的な事業拡大：</strong><br>マーケティング支援をより良くするため、BtoBインサイドセールス支援を行う「株式会社セールスリクエスト」や「株式会社Maroo」をM&Aで子会社化し、提供価値を拡大しています。上場後もベンチャーキャピタル的な機能の拡充やさらなるM&Aも視野に入れており、攻めのフェーズに携わるチャンスがあります。</li><li><strong>柔軟で働きやすい就業環境：</strong><br>週に複数回のリモートワークや、コアタイム（11:00～16:00）ありのフレックスタイム制を採用し、中抜けや副業もOKという柔軟な働き方が可能です。育休・産休復帰率も100％と高く、プロフェッショナルとしての裁量を持ちながらワークライフバランスも保てる環境が整っています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2011年に設立された運用型広告に特化した広告代理店です。Google広告やFacebook広告などの広告運用支援を中心に、アクセス解析や広告効果計測ツールなどのマーケティングテクノロジーツールの導入・運用支援を提供しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2011年に設立された運用型広告に特化した広告代理店です。Google広告やFacebook広告などの広告運用支援を中心に、アクセス解析や広告効果計測ツールなどのマーケティングテクノロジーツールの導入・運用支援を提供しています。クライアントと一体となり、迅速に仮説と検証を繰り返す「アジャイル思考」を取り入れ、成果を追求する姿勢が特徴です。また、顧客責任者と運用責任者を同一とする体制や、アカウントをクライアントの資産と捉える「オープンアカウント」など、独自の仕組みを導入しています。さらに、報酬形態も多様で、タイムチャージやレベニューシェアなど、クライアントのニーズに合わせた柔軟な対応が可能です。2024年9月には東京都港区赤坂にオフィスを移転し、BtoB事業者向けのサービス強化や、クリエイティブ領域の強化を目的とした子会社の設立など、積極的な事業展開を行っています。代表取締役の鈴木多聞氏は、経営コンサルティング会社での経験を経て、株式会社オーリーズを設立しました。同社は、クライアントの課題解決に向けた本質的な支援を提供し、共に成長するパートナーとして選ばれています。</p><p>同社では数年後のIPOを見据えた中長期戦略の一環として、まずは2026年の東京プロマーケット上場を第一ステップとして準備を進めています。上場準備、M&A案件といった複数の重要プロジェクトが並行する中で、体制強化が急務となっております。</p><p><strong>代表取締役グループCEO　鈴木 多聞氏（39歳）</strong><br>経営コンサルティング会社にて、主に情報通信産業と小売（通販）産業にて事業再建、M&Aや資金調達業務に従事した後、株式会社オーリーズを設立。2013年より運用型広告を通じて課題を解決する広告代理店として事業を開始、Google AdsやMeta広告などの運用型広告の戦略立案、体制構築、運用支援及びそれに付随するマーケティングテクノロジーツールの導入運用支援を実施する。2019年2月よりアタラ合同会社フェローに就任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 CFO</div>
+          <div class="job-preview">IPO準備に必要な内部管理体制の構築をリードし、上場後は攻めの財務領域へ役割拡張</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■上場前（〜2028年9月 グロース上場）</strong></p><p>管理担当役員・CFOとして、コーポレート部門全体を統括し、IPO準備に必要な内部管理体制の構築をリードしていただきます。IPO準備を見据えた経理財務・開示体制の構築・強化。具体的には、決算早期化、連結決算体制の整備、開示規程の策定・運用、内部統制/J-SOX対応、月次決算プロセスの最適化、管理部門チームのマネジメント。現任CFOとの3ヶ月の引継ぎを経て、上場申請までの実務遂行を主導。上場後は資本政策・M&A・投資機能など攻めの財務領域へ役割を拡張。</p><p><strong>○財務管理</strong></p><ul><li>予実管理と分析</li><li>取締役会資料の作成</li></ul><p><strong>○経理・会計</strong></p><ul><li>グループ月次決算、四半期決算、年次決算</li><li>監査対応（太陽監査法人）</li></ul><p><strong>○コーポレート部門のマネジメント</strong></p><ul><li>経営企画、経理、財務、総務法務、人事を含むコーポレート部門全体の統括</li><li>メンバーの育成・マネジメント</li></ul><p><strong>○業績管理・計画策定</strong></p><ul><li>3カ年の事業計画策定、KPI策定</li><li>数字チェック＆詰め</li></ul><p><strong>○証券審査・東証審査対応</strong></p><ul><li>質問リストへの回答</li><li>面談でのAnswer</li><li>証券会社対応（みずほ証券、フィリップ証券）</li></ul><p><strong>○開示・短信</strong></p><ul><li>開示資料の作成</li><li>証券、監査法人とのコミュニケーション</li></ul><p><strong>○その他上場準備業務</strong></p><ul><li>ロードショーサポート、エクイティストーリーサポート</li><li>規定策定、内部監査ディレクション</li><li>デッドファイナンス、SO・持株会対応</li><li>総会、取締役会運営、法定会議資料</li></ul><p><strong>■上場後（上記に加えて）</strong></p><p>上場後は内部管理体制の運営に加え、M&Aや資本政策など事業成長を牽引する「攻めの経営管理」へと役割の幅が広がります。中長期の企業価値向上に向けて、以下の業務を担っていただきます。</p><ul><li>IR（投資家コミュニケーション）</li><li>M&A対応（投資委員会の設置・運営）</li><li>CVC（コーポレートベンチャーキャピタル）の運営</li><li>PMI（管理面でのPost Merger Integration）</li><li>エクイティファイナンス（資本政策）</li><li>SO・持株会対応</li></ul><p><strong>応募資格：</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>四年制大学卒以上、又は日商簿記1級もしくは公認会計士の資格、または同等以上の会計知識</li><li>事業会社におけるIPO準備〜上場の実務経験（管理本部長、経理財務責任者、上場準備責任者等）</li><li>月次決算・年次決算の実務を自ら回した経験</li><li>経理財務領域での事業会社実務経験（目安10年以上）</li><li>関わりと協業に対する積極的なコミュニケーション能力、構造的に物事を捉えるロジカルシンキング能力</li><li>マネジメント経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>複数社でのIPO準備・上場経験</li><li>IPO準備における証券審査（質問リスト対応、東証審査）の経験</li><li>事業計画策定、予実管理の実務経験</li><li>開示・短信作成、IR実務の経験</li><li>M&A関連業務（スキーム策定、DD対応、PMI対応）の経験</li><li>デッドファイナンスの実務経験</li><li>連結決算の経験</li><li>公認会計士資格</li></ul><p><strong>求める人物像：</strong></p><p><strong>＜必須＞</strong><br>経理財務の実務に手を動かし、仕組み化と組織構築を同時進行できるハンズオン型CFO。現場起点で課題を定義し、段階的かつ再現性のある改善を重視する人材。IPO準備の確度を高めるため、マネジメント偏重ではなく実務解像度の高さを最重要視する。上場後のM&A・投資機能への展開を見据え、守りから攻めへの経営判断をサポートする思考の柔軟性を持つ。</p><p><strong>＜歓迎＞</strong></p><ul><li>これからIPOやM&Aにガンガンとチャレンジをする、まさに攻めのフェーズですので、新しいことに対するワクワクマインド、つまり「学習欲」のある方が組織文化にフィットするのではないかと思います。</li><li>また、当社は過度な経歴主義ではなく、自己開示をうまく行い、ときには自ら手を動かしてサポートしていくスタンスです。</li><li>IPO準備というフェーズでもあり、覚悟や熱量がないと厳しいこともある中で、自ら成果を出す覚悟を持った方。特に相性のいいフェーズにリッチにフィットする方がなお望ましいです。</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://allis-co.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://allis-co.notion.site/All-s-EVP-Book-8f60d10db08e45bfb34e54c8e4436d00" target="_blank">📊 EVP Book</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが瀧川政尚 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
